@@ -1,0 +1,520 @@
+{
+  "info": {
+    "_postman_id": "a91e5d76-8c9e-4e4b-bb2a-7b3b7501a111",
+    "name": "DevFlow API (Task 2)",
+    "description": "Postman Collection for DevFlow REST API - Users, Projects & Tasks endpoints with validation and error examples.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000",
+      "type": "string"
+    },
+    {
+      "key": "sampleUserId",
+      "value": "a1b2c3d4-e5f6-4a1b-8c2d-111111111111",
+      "type": "string"
+    },
+    {
+      "key": "sampleProjectId",
+      "value": "b1b2c3d4-e5f6-4a1b-8c2d-111111111111",
+      "type": "string"
+    },
+    {
+      "key": "sampleTaskId",
+      "value": "c1b2c3d4-e5f6-4a1b-8c2d-111111111111",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Root & Health",
+      "item": [
+        {
+          "name": "Get API Welcome",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/",
+              "host": ["{{baseUrl}}"],
+              "path": [""]
+            }
+          }
+        },
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/health",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "health"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Get All Users",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/users",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users"]
+            }
+          }
+        },
+        {
+          "name": "Get User by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/{{sampleUserId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users", "{{sampleUserId}}"]
+            }
+          }
+        },
+        {
+          "name": "Get User by ID - Not Found (404)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/users/non-existent-user-id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users", "non-existent-user-id"]
+            }
+          }
+        },
+        {
+          "name": "Create User - Success (201)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Evelyn Wright\",\n  \"email\": \"evelyn.wright@devflow.io\",\n  \"role\": \"developer\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/users",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users"]
+            }
+          }
+        },
+        {
+          "name": "Create User - Validation Error (400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"E\",\n  \"email\": \"not-an-email\",\n  \"role\": \"invalid-role\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/users",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users"]
+            }
+          }
+        },
+        {
+          "name": "Create User - Duplicate Email Conflict (409)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Duplicate User\",\n  \"email\": \"alice.johnson@devflow.io\",\n  \"role\": \"developer\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/users",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "users"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Projects",
+      "item": [
+        {
+          "name": "Get All Projects",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/projects",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "projects"]
+            }
+          }
+        },
+        {
+          "name": "Get Project by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/projects/{{sampleProjectId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "projects", "{{sampleProjectId}}"]
+            }
+          }
+        },
+        {
+          "name": "Get Project by ID - Not Found (404)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/projects/non-existent-project-id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "projects", "non-existent-project-id"]
+            }
+          }
+        },
+        {
+          "name": "Create Project - Success (201)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Analytics Engine v2\",\n  \"description\": \"Real-time streaming analytics engine with low latency.\",\n  \"ownerId\": \"{{sampleUserId}}\",\n  \"status\": \"active\",\n  \"progress\": 15\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/projects",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "projects"]
+            }
+          }
+        },
+        {
+          "name": "Create Project - Validation Error (400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"P\",\n  \"description\": \"shrt\",\n  \"ownerId\": \"\",\n  \"progress\": 150\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/projects",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "projects"]
+            }
+          }
+        },
+        {
+          "name": "Create Project - Missing Owner Not Found (404)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Orphan Project\",\n  \"description\": \"Valid project description but owner does not exist.\",\n  \"ownerId\": \"non-existent-owner-id\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/projects",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "projects"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Tasks",
+      "item": [
+        {
+          "name": "Get All Tasks",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/tasks",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tasks"]
+            }
+          }
+        },
+        {
+          "name": "Get Task by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/tasks/{{sampleTaskId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tasks", "{{sampleTaskId}}"]
+            }
+          }
+        },
+        {
+          "name": "Filter Tasks - status=done",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/tasks?status=done",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tasks"],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "done"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Filter Tasks - priority=high",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/tasks?priority=high",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tasks"],
+              "query": [
+                {
+                  "key": "priority",
+                  "value": "high"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Filter Tasks - Combined Filters (status=todo&priority=low)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/tasks?status=todo&priority=low",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tasks"],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "todo"
+                },
+                {
+                  "key": "priority",
+                  "value": "low"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Filter Tasks - Invalid Filter Value (400)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/tasks?status=unknown-status",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tasks"],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "unknown-status"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Create Task - Success (201)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Implement User Authentication Middleware\",\n  \"description\": \"Write JWT verification and role authorization logic.\",\n  \"projectId\": \"{{sampleProjectId}}\",\n  \"assignedTo\": \"{{sampleUserId}}\",\n  \"status\": \"todo\",\n  \"priority\": \"high\",\n  \"dueDate\": \"2026-04-15T00:00:00.000Z\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/tasks",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tasks"]
+            }
+          }
+        },
+        {
+          "name": "Create Task - Missing Project (404)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Task for missing project\",\n  \"projectId\": \"non-existent-project-id\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/tasks",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tasks"]
+            }
+          }
+        },
+        {
+          "name": "Update Task - Full/Partial (200)",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Design API Spec - v2 Final\",\n  \"description\": \"Updated design spec with schema validation rules.\",\n  \"priority\": \"high\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/tasks/{{sampleTaskId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tasks", "{{sampleTaskId}}"]
+            }
+          }
+        },
+        {
+          "name": "Update Task Status - PATCH (200)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"in-progress\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/tasks/{{sampleTaskId}}/status",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tasks", "{{sampleTaskId}}", "status"]
+            }
+          }
+        },
+        {
+          "name": "Update Task Status - Invalid Status (400)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"not-allowed-state\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/tasks/{{sampleTaskId}}/status",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tasks", "{{sampleTaskId}}", "status"]
+            }
+          }
+        },
+        {
+          "name": "Delete Task (200)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/tasks/{{sampleTaskId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tasks", "{{sampleTaskId}}"]
+            }
+          }
+        },
+        {
+          "name": "Delete Task - Not Found (404)",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/tasks/non-existent-task-id",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tasks", "non-existent-task-id"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Error Cases",
+      "item": [
+        {
+          "name": "Unknown Route (404)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/unknown-endpoint-path",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "unknown-endpoint-path"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

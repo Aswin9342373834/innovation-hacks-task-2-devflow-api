@@ -1,0 +1,36 @@
+{
+  "name": "devflow-api",
+  "version": "1.0.0",
+  "description": "DevFlow REST API - Users, Projects & Tasks API (Task 2)",
+  "main": "src/server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node --test tests/api.test.js",
+    "test:live": "node tests/manual_verification.js",
+    "lint": "eslint src/"
+  },
+  "keywords": [
+    "express",
+    "rest-api",
+    "devflow",
+    "crud",
+    "backend"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-validator": "^7.2.1",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.21.0",
+    "@eslint/js": "^9.21.0",
+    "globals": "^16.0.0",
+    "supertest": "^7.0.0"
+  }
+}
