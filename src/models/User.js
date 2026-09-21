@@ -30,6 +30,10 @@ const userSchema = new mongoose.Schema(
       },
       default: 'developer',
       trim: true
+    },
+    passwordHash: {
+      type: String,
+      default: null
     }
   },
   {
@@ -39,6 +43,7 @@ const userSchema = new mongoose.Schema(
       transform: (_doc, ret) => {
         ret.id = ret._id.toString();
         delete ret.__v;
+        delete ret.passwordHash;
         return ret;
       }
     },
@@ -47,6 +52,7 @@ const userSchema = new mongoose.Schema(
       transform: (_doc, ret) => {
         ret.id = ret._id.toString();
         delete ret.__v;
+        delete ret.passwordHash;
         return ret;
       }
     }
