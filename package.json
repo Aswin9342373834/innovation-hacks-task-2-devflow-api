@@ -1,12 +1,13 @@
 {
   "name": "devflow-api",
   "version": "1.0.0",
-  "description": "DevFlow REST API - Users, Projects & Tasks API (Task 2)",
+  "description": "DevFlow REST API - Users, Projects & Tasks API (Task 3 Database Integration)",
   "main": "src/server.js",
   "type": "commonjs",
   "scripts": {
     "start": "node src/server.js",
     "dev": "node --watch src/server.js",
+    "seed": "node src/data/seed.js",
     "test": "node --test tests/api.test.js",
     "test:live": "node tests/manual_verification.js",
     "lint": "eslint src/"
@@ -16,7 +17,9 @@
     "rest-api",
     "devflow",
     "crud",
-    "backend"
+    "backend",
+    "mongodb",
+    "mongoose"
   ],
   "author": "",
   "license": "ISC",
@@ -25,12 +28,14 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "express-validator": "^7.2.1",
+    "mongoose": "^9.10.1",
     "uuid": "^11.1.0"
   },
   "devDependencies": {
-    "eslint": "^9.21.0",
     "@eslint/js": "^9.21.0",
+    "eslint": "^9.21.0",
     "globals": "^16.0.0",
+    "mongodb-memory-server": "^10.1.4",
     "supertest": "^7.0.0"
   }
 }

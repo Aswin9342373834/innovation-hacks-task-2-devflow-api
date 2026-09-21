@@ -7,6 +7,7 @@ const taskRoutes = require('./routes/taskRoutes');
 const notFoundMiddleware = require('./middleware/notFoundMiddleware');
 const errorMiddleware = require('./middleware/errorMiddleware');
 const { sendSuccess } = require('./utils/response');
+const { getConnectionStatus } = require('./config/db');
 
 const app = express();
 
@@ -25,8 +26,9 @@ app.get('/', (req, res) => {
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
-  return sendSuccess(res, 200, 'Task 2 API is running', {
-    environment: process.env.NODE_ENV || 'development'
+  return sendSuccess(res, 200, 'DevFlow API is running', {
+    environment: process.env.NODE_ENV || 'development',
+    database: getConnectionStatus()
   });
 });
 

@@ -13,6 +13,7 @@ router.get('/:id', taskController.getTaskById);
 router.post('/', validateCreateTask, taskController.createTask);
 router.put('/:id', validateUpdateTask, taskController.updateTask);
 router.patch('/:id/status', validatePatchTaskStatus, taskController.updateTaskStatus);
+router.patch('/:id', validateUpdateTask, taskController.updateTask);
 router.delete('/:id', taskController.deleteTask);
 
 module.exports = router;
