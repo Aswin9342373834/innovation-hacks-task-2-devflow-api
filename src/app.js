@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
-  return sendSuccess(res, 200, 'DevFlow API is running', {
+  return sendSuccess(res, 200, 'Task 2 API is running', {
     environment: process.env.NODE_ENV || 'development'
   });
 });

@@ -23,7 +23,7 @@ describe('DevFlow API Automated Test Suite', () => {
       const res = await request(app).get('/api/health');
       assert.equal(res.statusCode, 200);
       assert.equal(res.body.success, true);
-      assert.equal(res.body.message, 'DevFlow API is running');
+      assert.equal(res.body.message, 'Task 2 API is running');
       assert.ok(res.body.data.environment);
     });
   });
