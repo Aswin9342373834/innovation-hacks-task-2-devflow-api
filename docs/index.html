@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevFlow API — Task 2 | Innovation Hacks Internship</title>
+  <meta name="description" content="DevFlow REST API documentation and project portal for Task 2 of the Innovation Hacks Full Stack Development Internship.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-brand">
+      <div class="brand-icon">⚡</div>
+      <span class="brand-name">DevFlow API</span>
+      <span class="brand-badge">Task 2</span>
+    </div>
+    <nav class="nav-links">
+      <a href="#overview">Overview</a>
+      <a href="#endpoints">Endpoints</a>
+      <a href="#verification">Test Results</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#postman">Postman</a>
+    </nav>
+    <a href="https://github.com/Aswin9342373834/innovation-hacks-task-2-devflow-api" target="_blank" rel="noopener noreferrer" class="btn-github">
+      <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+      View GitHub Repository
+    </a>
+  </header>
+
+  <main class="container">
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="internship-tag">Innovation Hacks Full Stack Development Internship</div>
+      <h1>DevFlow REST API</h1>
+      <p>A modular, robust Node.js & Express RESTful service managing Users, Projects, and Task lifecycle workflows with strict schema validation, query filtering, and automated tests.</p>
+      <div class="hero-actions">
+        <a href="https://github.com/Aswin9342373834/innovation-hacks-task-2-devflow-api" target="_blank" rel="noopener noreferrer" class="btn-primary">
+          <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          View GitHub Repository
+        </a>
+        <a href="#endpoints" class="btn-secondary">Explore API Endpoints</a>
+      </div>
+    </section>
+
+    <!-- Important Notice Callout -->
+    <div class="notice-card">
+      <div class="notice-icon">ℹ️</div>
+      <div class="notice-content">
+        <h4>Task 2 In-Memory Architecture & GitHub Pages Note</h4>
+        <p><strong>Task 2 uses an in-memory data store. Persistent database integration is planned for Task 3.</strong> This GitHub Pages deployment serves as the official static documentation portal and project showcase. The live Node.js and Express REST API executes locally or on server runtimes.</p>
+      </div>
+    </div>
+
+    <!-- Stats & Verification Banner -->
+    <section id="verification" class="section">
+      <div class="section-header">
+        <div class="section-tag">Quality & Verification</div>
+        <h2 class="section-title">Verified Test Results</h2>
+        <p class="section-desc">Every layer of the DevFlow API has been validated through automated test suites, static analysis linter rules, and live HTTP endpoint assertions.</p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-badge">100% PASSED</div>
+          <div class="stat-number">34 / 34 <span class="stat-sub">passed</span></div>
+          <h3>Automated Integration Tests</h3>
+          <p>Full suite testing endpoints, payload validation, foreign keys, error conditions, and state resets using Node.js test runner.</p>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-badge">ZERO ISSUES</div>
+          <div class="stat-number">0 / 0 <span class="stat-sub">clean</span></div>
+          <h3>Code Style & ESLint</h3>
+          <p>0 syntax errors, 0 warnings across all controller, middleware, route, and validator source files.</p>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-badge">LIVE CHECK PASSED</div>
+          <div class="stat-number">27 / 27 <span class="stat-sub">verified</span></div>
+          <h3>Live HTTP Verification</h3>
+          <p>27 real-time HTTP requests validating welcome endpoints, health checks, CRUD operations, query filters, and 404 routes.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Overview & Features -->
+    <section id="overview" class="section">
+      <div class="section-header">
+        <div class="section-tag">Internship Task 2</div>
+        <h2 class="section-title">Project Overview & Objectives</h2>
+        <p class="section-desc">Task 2 delivers the backend foundation for DevFlow: a modular RESTful engine adhering to standard HTTP semantics and enterprise conventions.</p>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">👥</div>
+          <h4>User Management</h4>
+          <p>List team members, query user profiles by ID, and register new members with unique normalized email enforcement and role constraints (developer, manager, designer, tester).</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">📁</div>
+          <h4>Project Directory</h4>
+          <p>Track team projects with completion progress, status flags, and relational owner assignment ensuring the referenced project owner is a valid user.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">📋</div>
+          <h4>Task Lifecycle Engine</h4>
+          <p>Complete CRUD operations for project tasks, relational verification (projectId and assignedTo), full metadata updates, and dedicated state transitions.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🔍</div>
+          <h4>Query Parameter Filtering</h4>
+          <p>Filter task collections dynamically with <code>?status=</code>, <code>?priority=</code>, and <code>?projectId=</code>, with support for combined criteria and strict enum validation.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🛡️</div>
+          <h4>Strict Input Validation</h4>
+          <p>Powered by <code>express-validator</code>. Every payload is sanitized and verified prior to reaching controller logic, returning descriptive field-level error messages.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">⚙️</div>
+          <h4>Centralized Error Handling</h4>
+          <p>Standardized JSON response envelope across all endpoints. Includes 404 fallback routing and a global error handling middleware trapping uncaught server exceptions.</p>
+        </div>
+      </div>
+
+      <div class="tech-pills">
+        <div class="tech-pill"><span>Runtime:</span> Node.js (v24.x)</div>
+        <div class="tech-pill"><span>Framework:</span> Express.js (v4.21.2)</div>
+        <div class="tech-pill"><span>Validation:</span> express-validator (v7.2.1)</div>
+        <div class="tech-pill"><span>CORS:</span> Enabled</div>
+        <div class="tech-pill"><span>Config:</span> dotenv (v16.4.7)</div>
+        <div class="tech-pill"><span>Identifiers:</span> UUID (v11.1.0)</div>
+        <div class="tech-pill"><span>Testing:</span> Node Native Test Runner + Supertest</div>
+      </div>
+    </section>
+
+    <!-- Endpoints Documentation -->
+    <section id="endpoints" class="section">
+      <div class="section-header">
+        <div class="section-tag">API Reference</div>
+        <h2 class="section-title">Documented Endpoints</h2>
+        <p class="section-desc">All API resource routes are prefixed with <code>/api</code> and return standard structured JSON envelopes.</p>
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Method</th>
+              <th>Endpoint</th>
+              <th>Description</th>
+              <th>Status Codes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="method-badge method-get">GET</span></td>
+              <td><code class="endpoint-code">/</code></td>
+              <td>API Welcome & Base Metadata</td>
+              <td><code>200 OK</code></td>
+            </tr>
+            <tr>
+              <td><span class="method-badge method-get">GET</span></td>
+              <td><code class="endpoint-code">/api/health</code></td>
+              <td>Server Health Check & Environment Status</td>
+              <td><code>200 OK</code></td>
+            </tr>
+            <tr>
+              <td><span class="method-badge method-get">GET</span></td>
+              <td><code class="endpoint-code">/api/users</code></td>
+              <td>List all registered users</td>
+              <td><code>200 OK</code></td>
+            </tr>
+            <tr>
+              <td><span class="method-badge method-get">GET</span></td>
+              <td><code class="endpoint-code">/api/users/:id</code></td>
+              <td>Retrieve a single user profile by UUID</td>
+              <td><code>200 OK</code>, <code>404 Not Found</code></td>
+            </tr>
+            <tr>
+              <td><span class="method-badge method-post">POST</span></td>
+              <td><code class="endpoint-code">/api/users</code></td>
+              <td>Create a user with unique email validation</td>
+              <td><code>201 Created</code>, <code>400 Bad Request</code>, <code>409 Conflict</code></td>
+            </tr>
+            <tr>
+              <td><span class="method-badge method-get">GET</span></td>
+              <td><code class="endpoint-code">/api/projects</code></td>
+              <td>List all active projects</td>
+              <td><code>200 OK</code></td>
+            </tr>
+            <tr>
+              <td><span class="method-badge method-get">GET</span></td>
+              <td><code class="endpoint-code">/api/projects/:id</code></td>
+              <td>Retrieve project details by UUID</td>
+              <td><code>200 OK</code>, <code>404 Not Found</code></td>
+            </tr>
+            <tr>
+              <td><span class="method-badge method-post">POST</span></td>
+              <td><code class="endpoint-code">/api/projects</code></td>
+              <td>Create project (verifies owner user exists)</td>
+              <td><code>201 Created</code>, <code>400 Bad Request</code>, <code>404 Not Found</code></td>
+            </tr>
+            <tr>
+              <td><span class="method-badge method-get">GET</span></td>
+              <td><code class="endpoint-code">/api/tasks</code></td>
+              <td>List tasks (supports query filtering)</td>
+              <td><code>200 OK</code>, <code>400 Bad Request</code></td>
+            </tr>
+            <tr>
+              <td><span class="method-badge method-get">GET</span></td>
+              <td><code class="endpoint-code">/api/tasks/:id</code></td>
+              <td>Retrieve task details by UUID</td>
+              <td><code>200 OK</code>, <code>404 Not Found</code></td>
+            </tr>
+            <tr>
+              <td><span class="method-badge method-post">POST</span></td>
+              <td><code class="endpoint-code">/api/tasks</code></td>
+              <td>Create task (verifies project & assignee exist)</td>
+              <td><code>201 Created</code>, <code>400 Bad Request</code>, <code>404 Not Found</code></td>
+            </tr>
+            <tr>
+              <td><span class="method-badge method-put">PUT</span></td>
+              <td><code class="endpoint-code">/api/tasks/:id</code></td>
+              <td>Update task details (title, description, priority, date)</td>
+              <td><code>200 OK</code>, <code>400 Bad Request</code>, <code>404 Not Found</code></td>
+            </tr>
+            <tr>
+              <td><span class="method-badge method-patch">PATCH</span></td>
+              <td><code class="endpoint-code">/api/tasks/:id/status</code></td>
+              <td>Transition task status (<code>todo</code>, <code>in-progress</code>, <code>done</code>)</td>
+              <td><code>200 OK</code>, <code>400 Bad Request</code>, <code>404 Not Found</code></td>
+            </tr>
+            <tr>
+              <td><span class="method-badge method-delete">DELETE</span></td>
+              <td><code class="endpoint-code">/api/tasks/:id</code></td>
+              <td>Delete a task by UUID</td>
+              <td><code>200 OK</code>, <code>404 Not Found</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Query Filtering Highlight -->
+      <div class="notice-card" style="border-left-color: var(--accent-cyan); margin-top: 1.5rem;">
+        <div class="notice-icon">🔎</div>
+        <div class="notice-content">
+          <h4>Query Parameter Filtering on <code>GET /api/tasks</code></h4>
+          <p>
+            • Filter by status: <code>GET /api/tasks?status=done</code> (values: <code>todo</code>, <code>in-progress</code>, <code>done</code>)<br>
+            • Filter by priority: <code>GET /api/tasks?priority=high</code> (values: <code>low</code>, <code>medium</code>, <code>high</code>)<br>
+            • Filter by project: <code>GET /api/tasks?projectId=&lt;uuid&gt;</code><br>
+            • Combined filters: <code>GET /api/tasks?status=todo&priority=low</code>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section id="architecture" class="section">
+      <div class="section-header">
+        <div class="section-tag">System Design</div>
+        <h2 class="section-title">Decoupled Layered Architecture</h2>
+        <p class="section-desc">Organized into distinct layers separating transport concerns, validation, business domain logic, and data abstraction.</p>
+      </div>
+
+      <div class="arch-card">
+        <div class="flow-step">
+          <div class="flow-num">1</div>
+          <div class="flow-content">
+            <h5>HTTP Entry & Middleware Layer (<code>src/app.js</code> & <code>src/server.js</code>)</h5>
+            <p>Configures Express, enables CORS, parses incoming JSON payloads, and attaches route dispatchers.</p>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="flow-num">2</div>
+          <div class="flow-content">
+            <h5>Validation Layer (<code>src/validators/</code>)</h5>
+            <p>Uses <code>express-validator</code> to reject malformed parameters or bodies with <code>400 Bad Request</code> before controller execution.</p>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="flow-num">3</div>
+          <div class="flow-content">
+            <h5>Controller Layer (<code>src/controllers/</code>)</h5>
+            <p>Applies domain business logic, verifies foreign entity references (e.g. project owner, task assignee), and triggers store methods.</p>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="flow-num">4</div>
+          <div class="flow-content">
+            <h5>Data Store Layer (<code>src/data/store.js</code>)</h5>
+            <p>Encapsulates in-memory collections and seed data with synchronous/asynchronous interfaces, designed for seamless replacement with a persistent database in Task 3.</p>
+          </div>
+        </div>
+
+        <div class="flow-step">
+          <div class="flow-num">5</div>
+          <div class="flow-content">
+            <h5>Standard Response Envelope (<code>src/utils/response.js</code>)</h5>
+            <p>Formats every output into a uniform JSON response structure (<code>{ success, message, data/errors }</code>).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Postman Section -->
+    <section id="postman" class="section">
+      <div class="section-header">
+        <div class="section-tag">API Testing Toolkit</div>
+        <h2 class="section-title">Postman Collection Included</h2>
+        <p class="section-desc">A complete exported Postman collection is included directly inside the repository at <code>postman/DevFlow-API.postman_collection.json</code>.</p>
+      </div>
+
+      <div class="feature-card">
+        <h4>Included Test Scenarios in Postman:</h4>
+        <p style="margin-bottom: 1rem;">The collection includes pre-configured collection variables (<code>baseUrl</code>, <code>sampleUserId</code>, <code>sampleProjectId</code>, <code>sampleTaskId</code>) covering:</p>
+        <ul style="padding-left: 1.5rem; color: var(--text-secondary); font-size: 0.925rem; line-height: 1.8;">
+          <li>Root welcome and health check endpoints.</li>
+          <li>User listing, ID lookup, successful creation, validation errors (400), and duplicate email conflict (409).</li>
+          <li>Project listing, ID lookup, successful creation, and non-existent owner lookup (404).</li>
+          <li>Task listing, query filtering (?status, ?priority, ?projectId), task creation, full updates (PUT), status patches (PATCH), deletion (DELETE), and foreign key checks (404).</li>
+          <li>Catch-all 404 route handling.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Task 3 Roadmap -->
+    <section class="section">
+      <div class="notice-card" style="border-left-color: var(--accent-purple);">
+        <div class="notice-icon">🚀</div>
+        <div class="notice-content">
+          <h4>Looking Ahead: Task 3 Persistent Database Integration</h4>
+          <p><strong>"Task 2 uses an in-memory data store. Persistent database integration is planned for Task 3."</strong> Because the controller layer interacts strictly with store helper abstractions, migrating to MongoDB, PostgreSQL, or MySQL in Task 3 will require zero changes to the client-facing API endpoints, HTTP contracts, or response structures.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container" style="padding: 0;">
+      <p style="margin-bottom: 0.5rem;">DevFlow REST API — Innovation Hacks Full Stack Development Internship Task 2</p>
+      <p style="margin-bottom: 1rem;">Developed by <strong style="color: var(--text-primary);">Aswin Muthaiya</strong></p>
+      <p>
+        <a href="https://github.com/Aswin9342373834/innovation-hacks-task-2-devflow-api" target="_blank" rel="noopener noreferrer">
+          GitHub Repository: innovation-hacks-task-2-devflow-api
+        </a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
